@@ -1,24 +1,18 @@
-2
----
-Calculus
-Gilbert Strang, Holiday James
-2004
-10th
--
-print
-rm_author Holiday James
-update_title Calculus 2
-update_pubyear 2012
-print
----
-Introduction to Probability
-Tim Cheney, David Kincaid, Holiday James
-1993
-4th
--
-add_author Andrew Waldron
-update_title Introduction to Probability and Statistics
-update_pubyear 2013
-update_edition 5th
-print
----
+PythonBasics 3 DataStructures 2 Algorithms 1 Networks 4 DBSystems 5
+CREATE_USER G Bob
+CREATE_USER P ProfChen
+BORROW Bob PythonBasics
+BORROW Bob PythonBasics
+BORROW Bob PythonBasics
+APPLY_LAB Bob 2025-06-01 LabA
+APPLY_LAB Bob 2025-06-01 LabA
+APPLY_LAB Bob 2025-06-02 LabB
+SHOW Bob
+BORROW ProfChen PythonBasics
+BORROW ProfChen DataStructures
+APPLY_LAB ProfChen 2025-06-01 LabC
+APPLY_LAB ProfChen 2025-06-01 LabA
+APPLY_CONFERENCE ProfChen 2025-07-01 RoomA
+APPLY_CONFERENCE ProfChen 2025-07-01 RoomA
+SHOW ProfChen
+EXIT

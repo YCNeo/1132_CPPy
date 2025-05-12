@@ -1,0 +1,16 @@
+PythonBasics 3 DataStructures 2 Algorithms 1 Networks 4 DBSystems 5
+CREATE_USER U Alice
+RETURN Alice ExtraBook
+SEARCH PythonBasics
+SEARCH ExtraBook
+BORROW Alice ExtraBook
+BORROW Alice PythonBasics
+BORROW Alice DataStructures
+BORROW Alice Algorithms
+BORROW Alice Networks
+BORROW Alice DBSystems
+BORROW Alice PythonBasics
+RETURN Alice Algorithms
+BORROW Alice Networks
+SHOW Alice
+EXIT

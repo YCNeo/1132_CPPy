@@ -1,12 +1,12 @@
-1
----
-Linear Algebra
-David Cherney, Tom Denton, Rohit Thomas, Harry Wu
-2013
-First
--
-update_edition Second
-add_author Andrew Waldron
-rm_author Harry Wu
-print
----
+PythonBasics 2 DataStructures 5 MachineLearning 3
+CREATE_USER U Bob
+CREATE_USER G David
+CREATE_USER P Alice
+SEARCH PythonBasics
+BORROW Bob PythonBasics
+SHOW Bob
+APPLY_LAB David 2025-05-10 A
+SHOW David
+APPLY_CONFERENCE Alice 2025-05-10 B
+SHOW Alice
+EXIT
