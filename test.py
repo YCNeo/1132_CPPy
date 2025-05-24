@@ -1,15 +1,31 @@
-import datetime
+cards = [
+    ["1", "red"],
+    ["2", "yellow"],
+    ["2", "yellow"],
+    ["3", "green"],
+    ["3", "green"],
+    ["3", "green"],
+    ["4", "blue"],
+    ["skip", "red"],
+    ["reverse", "yellow"],
+    ["wild", "green"],
+    ["+4", "blue"],
+]
 
-print("2023-11-30" > "0000-01-01")
+choosen_cards = [card for card in cards if card[0].isdigit()]
 
-d1 = datetime.datetime.strptime("2023-01-01", "%Y-%m-%d").date()
-d2 = datetime.datetime.strptime("2023-05-20", "%Y-%m-%d").date()
+color_count = {
+    "red": 0,
+    "yellow": 0,
+    "green": 0,
+    "blue": 0,
+}
+for card in choosen_cards:
+    color_count[card[1]] += 1
+max_color = max(color_count, key=color_count.get)
 
-count_1sts = 0
-current = d1
-while current <= d2:
-    if current.day == 1:
-        count_1sts += 1
-    current += datetime.timedelta(days=1)
+print(color_count)
+print(max_color)  # This will print the color with the maximum count
 
-print(count_1sts)
+a = "+4"
+print(a.isdigit())  # This will print False since "+4" is not a digit
