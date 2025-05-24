@@ -10,17 +10,6 @@ class Card:
             else ""
         )
 
-    def __repr__(self):
-        color_code = {"red": 31, "yellow": 33, "green": 32, "blue": 36}
-        if self.color is None:
-            ansi_code = 0
-        else:
-            ansi_code = color_code[self.color]
-        return f"\033[{ansi_code}m{self.value}\033[0m"
-
-    def __str__(self):
-        return f"{self.value} {self.color}" if self.color else self.value
-
     def update_color(self, color: str):
         if self.value == "wild" or self.value == "+4":
             self.color = color
@@ -47,7 +36,6 @@ class Player:
         color_count = {"red": 0, "yellow": 0, "green": 0, "blue": 0, "": 0}
         for card in self.hand:
             color_count[card.color] += 1
-
         max_color = max(color_count, key=color_count.get)
 
         return max_color if max_color != "" and color_count[max_color] > 0 else "red"
@@ -101,14 +89,6 @@ class Game:
         self.top_card: Card = None
         self.winner: Player = None
 
-    def __str__(self):
-        player_str_list = [str(player.id) for player in self.players]
-        player_str_list[self.turn] += "  <- next"
-
-        players_str = "\n".join(player_str_list)
-        game_str = f"""{"=" * 10}\nTop Card: {self.top_card}\n\nPlayers:\n{players_str}\n{"=" * 10}"""
-        return game_str
-
     def add_player(self, players):
         for p in players:
             self.players.append(p)
@@ -127,23 +107,20 @@ class Game:
         return self.pile.pop(0)
 
     def special_card_action(self, card: Card, player: Player):
-        if card.value == "skip":
-            self.turn = (self.turn + self.direction) % 5
-        elif card.value == "reverse":
-            self.direction *= -1
-        elif card.value == "wild":
-            card.update_color(player.choose_color())
-        elif card.value == "+2":
-            for _ in range(2):
-                self.players[(self.turn + self.direction) % 5].add_card(
-                    self.draw_card()
-                )
-        elif card.value == "+4":
-            card.update_color(player.choose_color())
-            for _ in range(4):
-                self.players[(self.turn + self.direction) % 5].add_card(
-                    self.draw_card()
-                )
+        match card.value:
+            case "skip":
+                self.turn = (self.turn + self.direction) % 5
+            case "reverse":
+                self.direction *= -1
+            case "wild":
+                card.update_color(player.choose_color())
+            case "+2":
+                for _ in range(2):
+                    self.players[(self.turn + self.direction) % 5].add_card(self.draw_card())
+            case "+4":
+                card.update_color(player.choose_color())
+                for _ in range(4):
+                    self.players[(self.turn + self.direction) % 5].add_card(self.draw_card())
 
         return card
 
